@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cristiano Zonta - Advocacia Estratégica & Consultoria</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            darknavy: '#0B111E',
+            accentgold: '#C5A059',
+            cardbg: '#131B2E'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-darknavy text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-accentgold selection:text-black">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-darknavy/80 backdrop-blur-md border-b border-gray-800/50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="text-xl font-bold tracking-wider text-accentgold uppercase">
+        Cristiano Zonta <span class="text-xs text-gray-400 block tracking-normal font-normal">Advocacia & Consultoria</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+        <a href="#atuacao" class="hover:text-accentgold transition-colors">Áreas de Atuação</a>
+        <a href="#diferenciais" class="hover:text-accentgold transition-colors">Diferenciais</a>
+        <a href="#autoridade" class="hover:text-accentgold transition-colors">O Escritório</a>
+        <a href="#faq" class="hover:text-accentgold transition-colors">FAQ</a>
+      </nav>
+      <a href="#contato" class="px-5 py-2.5 rounded-full bg-accentgold text-darknavy font-semibold text-sm hover:bg-yellow-500 transition-all shadow-lg shadow-accentgold/20">
+        Agendar Consulta
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO DE SCROLL ESTENDIDO (500vh) -->
+  <div id="hero-scroll-container" class="relative h-[500vh] w-full">
+    <!-- Viewport Fixa (100vh) -->
+    <div class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+      
+      <!-- 1. ELEMENTO CANVAS (z-index: 0) -->
+      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full block z-0 object-cover"></canvas>
+
+      <!-- 2. OVERLAYS ANTI-SUMIÇO DE TEXTO (z-index: 10) -->
+      <div class="absolute inset-0 z-10 bg-gradient-to-t from-darknavy via-darknavy/60 to-darknavy/40 pointer-events-none"></div>
+      <div class="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-darknavy/50 to-darknavy pointer-events-none"></div>
+
+      <!-- 3. CONTAINER DE TEXTOS DINÂMICOS (z-index: 20) -->
+      <div class="relative z-20 max-w-4xl mx-auto px-6 text-center">
+        
+        <!-- STEP 1 -->
+        <div id="step-1" class="transition-all duration-500">
+          <span class="inline-block px-4 py-1.5 rounded-full border border-accentgold/40 text-accentgold text-xs uppercase tracking-widest mb-4 bg-accentgold/10">
+            Segurança Jurídica High-Ticket
+          </span>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            Gestão Estratégica de Riscos & Contencioso Complexo
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light">
+            Soluções jurídicas sob medida em Porto Alegre para blindagem de ativos e defesa corporativa.
+          </p>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step-2" class="opacity-0 pointer-events-none transition-all duration-500 absolute inset-0 flex flex-col justify-center items-center">
+          <span class="inline-block px-4 py-1.5 rounded-full border border-accentgold/40 text-accentgold text-xs uppercase tracking-widest mb-4 bg-accentgold/10">
+            Transformação de Estado
+          </span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+            Da Incerteza ao Controle Absoluto
+          </h2>
+          <p class="text-base md:text-lg text-gray-300 max-w-xl font-light">
+            Transformamos passivos vulneráveis e litígios críticos em estratégias claras e previsíveis de sucesso.
+          </p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step-3" class="opacity-0 pointer-events-none transition-all duration-500 absolute inset-0 flex flex-col justify-center items-center">
+          <span class="inline-block px-4 py-1.5 rounded-full border border-accentgold/40 text-accentgold text-xs uppercase tracking-widest mb-4 bg-accentgold/10">
+            Atendimento Exclusivo
+          </span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+            Pronto para Proteger o Seu Negócio?
+          </h2>
+          <div class="pt-4">
+            <a href="#contato" class="px-8 py-4 rounded-xl bg-accentgold text-darknavy font-bold text-lg hover:bg-yellow-500 transition-all shadow-xl shadow-accentgold/30">
+              Solicitar Análise de Caso
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ESQUELETO DO CORPO (INSTITUCIONAL DE ALTA AUTORIDADE) -->
+
+  <!-- ÁREAS DE ATUAÇÃO -->
+  <section id="atuacao" class="py-24 bg-darknavy relative z-30 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Áreas de Atuação Especializada</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Atuação cirúrgica focada em resultados e mitigação total de riscos.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-accentgold/50 transition-all">
+          <div class="w-12 h-12 rounded-lg bg-accentgold/10 text-accentgold flex items-center justify-center font-bold text-xl mb-6">01</div>
+          <h3 class="text-xl font-bold text-white mb-3">Direito Corporativo & Negócios</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Estruturação de contratos estratégicos, governança e resolução de disputas societárias complexas.</p>
+        </div>
+        <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-accentgold/50 transition-all">
+          <div class="w-12 h-12 rounded-lg bg-accentgold/10 text-accentgold flex items-center justify-center font-bold text-xl mb-6">02</div>
+          <h3 class="text-xl font-bold text-white mb-3">Contencioso Estratégico</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Representação de alto nível em litígios de grande impacto financeiro ou reputacional.</p>
+        </div>
+        <div class="bg-cardbg p-8 rounded-2xl border border-gray-800 hover:border-accentgold/50 transition-all">
+          <div class="w-12 h-12 rounded-lg bg-accentgold/10 text-accentgold flex items-center justify-center font-bold text-xl mb-6">03</div>
+          <h3 class="text-xl font-bold text-white mb-3">Consultoria & Preventivo</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Auditoria contínua para evitar processos e otimizar a segurança operacional de empresas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS E PROVA SOCIAL -->
+  <section id="diferenciais" class="py-24 bg-cardbg/50 border-t border-gray-800/80">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-accentgold text-sm font-semibold uppercase tracking-wider">Excelência Reconhecida</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">Rigor Técnico e Foco Implacável no Cliente</h2>
+        <p class="text-gray-300 mb-6 leading-relaxed">
+          Localizado no Centro Histórico de Porto Alegre, o escritório Cristiano Zonta combina tradição jurídica com estratégias contemporâneas para entregar defesas sólidas e ágeis.
+        </p>
+        <div class="grid grid-cols-2 gap-6 pt-4 border-t border-gray-800">
+          <div>
+            <div class="text-3xl font-extrabold text-accentgold">5.0 ★</div>
+            <div class="text-xs text-gray-400 mt-1">Avaliação Máxima no Google</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-white">100%</div>
+            <div class="text-xs text-gray-400 mt-1">Compromisso Ético & Transparência</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-cardbg p-8 rounded-2xl border border-gray-800">
+        <h3 class="text-xl font-bold text-white mb-6">O que dizem os clientes</h3>
+        <blockquote class="text-gray-300 italic mb-6">
+          "Atendimento impecável, clareza técnica e condução extremamente segura do nosso processo corporativo."
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-accentgold/20 flex items-center justify-center font-bold text-accentgold">C</div>
+          <div>
+            <div class="text-sm font-bold text-white">Cliente Corporativo</div>
+            <div class="text-xs text-gray-500">Porto Alegre - RS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO DE CONTATO -->
+  <section id="contato" class="py-24 bg-darknavy border-t border-gray-800">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-white mb-3">Agende uma Consulta Restrita</h2>
+        <p class="text-gray-400 text-sm">Preencha o formulário abaixo para análise preliminar da sua demanda.</p>
+      </div>
+
+      <form class="space-y-6 bg-cardbg p-8 rounded-2xl border border-gray-800" onsubmit="event.preventDefault();">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-2">Nome Completo</label>
+            <input type="text" class="w-full bg-darknavy border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accentgold text-sm" placeholder="Seu nome" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-300 mb-2">E-mail Corporativo</label>
+            <input type="email" class="w-full bg-darknavy border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accentgold text-sm" placeholder="seu@email.com" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-300 mb-2">Resumo da Demanda / Caso</label>
+          <textarea rows="4" class="w-full bg-darknavy border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accentgold text-sm" placeholder="Descreva brevemente a situação..."></textarea>
+        </div>
+        <button type="submit" class="w-full py-4 bg-accentgold text-darknavy font-bold rounded-lg hover:bg-yellow-500 transition-all text-center">
+          Enviar para Avaliação Confidencial
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-black/40 border-t border-gray-900 text-xs text-gray-500 text-center">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© Cristiano Zonta - Advocacia. Todos os direitos reservados.</div>
+      <div>Largo Visc. do Cairú, 12 - Sala 403 - Centro Histórico, Porto Alegre - RS</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ENGINE GSAP + CANVAS FALLBACK -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const canvas = document.getElementById("hero-canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Redimensionamento do Canvas
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      renderFallback();
+    }
+    window.addEventListener("resize", resizeCanvas);
+
+    // Array de Sequência WebP com Fallback de Rendimento Dinâmico
+    const frameCount = 60;
+    const currentFrame = { frame: 0 };
+    const images = [];
+    let imagesLoaded = 0;
+
+    // Fallback de Gradiente Dinâmico enquanto assets WebP carregam
+    function renderFallback() {
+      const progress = currentFrame.frame / (frameCount - 1);
+      const width = canvas.width;
+      const height = canvas.height;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Simulação do Antes (Dark) para o Depois (Gold Protegido)
+      const grad = ctx.createRadialGradient(
+        width / 2, height / 2, 50,
+        width / 2, height / 2, width * 0.8
+      );
+
+      const goldIntensity = Math.floor(197 * progress);
+      grad.addColorStop(0, `rgba(${19 + goldIntensity}, ${27 + Math.floor(133 * progress)}, ${46 + Math.floor(43 * progress)}, 1)`);
+      grad.addColorStop(1, '#0B111E');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    // Pré-carregamento das imagens WebP
+    for (let i = 1; i <= frameCount; i++) {
+      const img = new Image();
+      const frameIndex = String(i).padStart(4, '0');
+      img.src = `./frames/frame-${frameIndex}.webp`;
+      img.onload = () => {
+        imagesLoaded++;
+      };
+      images.push(img);
+    }
+
+    function render() {
+      if (imagesLoaded === frameCount && images[Math.floor(currentFrame.frame)].complete) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(images[Math.floor(currentFrame.frame)], 0, 0, canvas.width, canvas.height);
+      } else {
+        renderFallback();
+      }
+    }
+
+    resizeCanvas();
+
+    // GSAP Timeline no Scroll Container (500vh)
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#hero-scroll-container",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.5,
+      }
+    });
+
+    // 1. Animação dos Frames no Canvas
+    tl.to(currentFrame, {
+      frame: frameCount - 1,
+      snap: "frame",
+      ease: "none",
+      onUpdate: render
+    }, 0);
+
+    // 2. Transições de Texto
+    // Step 1 Sumir
+    tl.to("#step-1", { opacity: 0, y: -30, duration: 0.2 }, 0.2);
+
+    // Step 2 Aparecer e Sumir
+    tl.to("#step-2", { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.2 }, 0.35);
+    tl.to("#step-2", { opacity: 0, y: -30, pointerEvents: "none", duration: 0.2 }, 0.6);
+
+    // Step 3 Aparecer
+    tl.to("#step-3", { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.2 }, 0.75);
+  </script>
+</body>
+</html>
