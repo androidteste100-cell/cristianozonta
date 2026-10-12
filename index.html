@@ -226,7 +226,7 @@
     window.addEventListener("resize", resizeCanvas);
 
     // Array de Sequência WebP com Fallback de Rendimento Dinâmico
-    const frameCount = 60;
+    const frameCount = 240;
     const currentFrame = { frame: 0 };
     const images = [];
     let imagesLoaded = 0;
@@ -257,7 +257,7 @@
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image();
       const frameIndex = String(i).padStart(4, '0');
-      img.src = `./frames/frame-${frameIndex}.webp`;
+      img.src = `./frame 1/frame-${frameIndex}.webp`;
       img.onload = () => {
         imagesLoaded++;
       };
